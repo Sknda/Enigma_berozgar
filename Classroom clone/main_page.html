@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="main_page.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Welcome to one-on-one tutorial</h1>
+                <h2>Choose your role</h2>
+                <button onclick="teacher_login()">teacher</button>
+                <button onclick="login_student()">student</button>
+                <button onclick="login_admin()">admin</button>
+            </div>
+                
+            </div>
+        </div>
+    </div>        
+   
+
+    <script>
+        function login_admin(){
+            window.open("login_admin.html");
+        }
+        function teacher_login(){
+            window.open("teacher_login.html");
+        }
+        function login_student(){
+            window.open("login_student.html");
+        }
+        
+    </script>
+</body>
+</html>

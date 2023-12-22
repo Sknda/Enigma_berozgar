@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center">one-on-one login(Teacher)</h1>
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary btn-block" onclick="createAccount()">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function createAccount() {
+            window.open("create_acc.html");
+        }
+    </script>
+</body>
+</html>
