@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messenger</title>
+    <style>
+        .messages {
+            max-height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            padding: 10px;
+            margin: 5px;
+            max-width: 50%;
+            border-radius: 5px;
+        }
+
+        .user {
+            background-color: #4CAF50;
+            color: white;
+            align-self: flex-end;
+        }
+
+        .bot {
+            background-color: #f0f0f0;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+    <div id="messenger">
+        <div id="messages" class="messages"></div>
+        <input id="input" type="text" placeholder="Type your message..." />
+        <button id="send">Send</button>
+    </div>
+
+    <script>
+        var socket = new WebSocket('ws://localhost:8080');
+        var messagesDiv = document.getElementById('messages');
+        var inputField = document.getElementById('input');
+        var sendButton = document.getElementById('send');
+
+        socket.addEventListener('message', function(event) {
+            addMessage(event.data, 'user');
+        });
+
+        sendButton.addEventListener('click', function() {
+            var message = inputField.value;
+            if (message !== '') {
+                addMessage(message, 'user');
+                inputField.value = '';
+                socket.send(message);
+            }
+        });
+
+        function addMessage(message, sender) {
+            var newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.classList.add(sender);
+            newMessage.textContent = message;
+            messagesDiv.appendChild(newMessage);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>
